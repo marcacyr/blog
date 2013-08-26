@@ -1,15 +1,19 @@
-%h1 Listing Posts
+%div.container-fluid
+  %div.span12
+    %h1 Listing Posts
 
-= link_to 'New Post', new_post_path
+    = link_to 'New Post', new_post_path
 
-%table
-  %tr
-    %th Title
-    %th Text
+  %div.span12.center
 
-= @posts.each do |post|
-  %tr
-    %td 
-      = post.title
-    %td
-      = post.text
+    %table
+      %tr
+        %th Title
+        %th Text
+
+    = @posts.each do |post|
+      %tr
+        %td 
+          = post.title
+        %td
+          = post.text

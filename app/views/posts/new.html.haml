@@ -1,16 +1,31 @@
-%h1 New Post
+%div.span12.container-fluid
+  %div.span12.hero-unit
+    %div.span8
+      %h1 New Post
 
-= form_for :post, url: posts_path do |f|
-  %p
-    = f.label :title 
-    = f.text_field :title
+      = form_for :post, url: posts_path do |f|
+        - if @post.errors.any?
+          %div#errorExplanation
+            %h2
+              = pluralize(@post.errors.count, "error")
+              prohibited this post from being saved:
+            %ul
+              = @post.errors.full_messages.each do |msg|
+                %li
+                  = msg
 
-  %p
-    = f.label :text
-    = f.text_area :text
+        %p
+          = f.label :title 
+          = f.text_field :title
 
-  %p
-    = f.submit
+        %p
+          = f.label :text
+          = f.text_area :text
 
-= link_to 'Back', posts_path
+        %p
+          = f.submit :class => "btn btn-primary"
+
+        = link_to 'Back', posts_path
+        |
+        = link_to 'Home', root_path
 
